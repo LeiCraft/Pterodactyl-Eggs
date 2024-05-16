@@ -1,8 +1,8 @@
 #!/bin/bash
 
-CYAN="\[\033[38;2;0;255;255m\]"
-RED="\[\033[38;2;255;0;0m\]"
-BOLD="\[\033[1m\]"
+CYAN="\033[38;2;0;255;255m"
+RED="\033[38;2;255;0;0m"
+BOLD="\033[1m"
 NC='\033[0m'
 
 #############################
@@ -24,7 +24,7 @@ function installOS() {
 
     # Download & decompress the Linux root file system
 
-    printf "\033c"
+    echo "\033c"
     printf "${CYAN}╭───────────────────────────────────────────────────────────────────────────────╮${NC}"
     printf "${CYAN}│                                                                               │${NC}"
     printf "${CYAN}│                              LeiCraft_MC Hosting                              │${NC}"
@@ -35,7 +35,7 @@ function installOS() {
     printf ""
   
     printf "${GREEN}Installing Debian 11...${NC}"
-    url="https://fra1lxdmirror01.do.letsbuildthe.cloud/images/debian/bullseye/amd/default/"
+    url="https://fra1lxdmirror01.do.letsbuildthe.cloud/images/debian/bullseye/amd64/default/"
 
     LATEST_VERSION=$(curl -s $url | grep -oP 'href="\K[^"]+/' | sort -r | head -n 1)
 
