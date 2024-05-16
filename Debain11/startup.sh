@@ -367,7 +367,7 @@ fi
 #################################
 
 # Download run.sh
-curl -Ls "https://raw.githubusercontent.com/ysdragon/Pterodactyl-VPS-Egg/main/run.sh" -o "$ROOTFS_DIR/home/container/run.sh"
+curl -Ls "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/run.sh" -o "$ROOTFS_DIR/home/container/run.sh"
 # Make run.sh executable.
 chmod +x "$ROOTFS_DIR/home/container/run.sh"
 
