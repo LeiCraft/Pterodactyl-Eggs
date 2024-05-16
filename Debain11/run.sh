@@ -12,21 +12,19 @@ printf "${GREEN}│                           ${RED}© 2021 - 2024 ysdragon${GRE
 printf "${GREEN}│                                                                                │${NC}\n"
 printf "${GREEN}╰────────────────────────────────────────────────────────────────────────────────╯${NC}\n"
 printf "                                                                                               \n"
-printf "root@MyVPS:${DIR}#                                                                             \n"
 
-service dropbear restart
 
-# Define functions for each command
-function shutdown() {
-    exit
+function startup() {
+
+    service dropbear restart > /dev/null
+    echo "Started SSH Server"
+
 }
 
-
-# Associative array to map commands to functions
-declare -A command_functions=(
-    ["stop"]=shutdown
-    ["shutdown"]=shutdown
-)
+# Define functions for each command
+function cmd_shutdown() {
+    exit
+}
 
 # Function to execute the command
 function execute_command() {
@@ -40,11 +38,27 @@ function execute_command() {
     fi
 }
 
-# Main loop to continuously ask for commands
-while true; do
-    read -p "> " input
-    # Trim leading and trailing whitespace
-    input=$(echo "$input" | xargs)
-    # Execute the command
-    execute_command "$input"
-done
+function main() {
+
+    echo -e "\nRun Commands below:"
+
+    # Associative array to map commands to functions
+    declare -A -g command_functions=(
+        ["stop"]=cmd_shutdown
+        ["shutdown"]=cmd_shutdown
+    )
+
+
+    # Main loop to continuously ask for commands
+    while true; do
+        read -p "> " input
+        # Trim leading and trailing whitespace
+        input=$(echo "$input" | xargs)
+        # Execute the command
+        execute_command "$input"
+    done
+
+}
+
+startup
+main
