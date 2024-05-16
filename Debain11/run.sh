@@ -1,22 +1,24 @@
 #!/bin/bash
-RED='\033[0;31m'
-GREEN='\033[0;32m'
+
+CYAN="\[\033[38;2;0;255;255m\]"
+RED="\[\033[38;2;255;0;0m\]"
 NC='\033[0m'
 
 printf "\033c"
-printf "${GREEN}╭────────────────────────────────────────────────────────────────────────────────╮${NC}\n"
-printf "${GREEN}│                                                                                │${NC}\n"
-printf "${GREEN}│                             Pterodactyl VPS EGG                                │${NC}\n"
-printf "${GREEN}│                                                                                │${NC}\n"
-printf "${GREEN}│                           ${RED}© 2021 - 2024 ysdragon${GREEN}                               │${NC}\n"
-printf "${GREEN}│                                                                                │${NC}\n"
-printf "${GREEN}╰────────────────────────────────────────────────────────────────────────────────╯${NC}\n"
-printf "                                                                                               \n"
-
+echo "${CYAN}╭───────────────────────────────────────────────────────────────────────────────╮${NC}"
+echo "${CYAN}│                                                                               │${NC}"
+echo "${CYAN}│                              LeiCraft_MC Hosting                              │${NC}"
+echo "${CYAN}│                                                                               │${NC}"
+echo "${CYAN}│                                   ${RED}Debain 11                                   │${NC}"
+echo "${CYAN}│                                                                               │${NC}"
+echo "${CYAN}╰───────────────────────────────────────────────────────────────────────────────╯${NC}"
+echo ""
 
 function startup() {
 
     sleep 2
+
+    bash /home/container/packageSetup.sh
 
     service dropbear restart
     echo "Started SSH Server"
