@@ -16,4 +16,7 @@ WORKDIR /
 
 COPY ./entrypoint.sh /entrypoint.sh
 
+COPY ./startup.sh /startup.sh
+COPY ./install.sh /install.sh
+
 CMD ["/bin/bash", "/entrypoint.sh"]

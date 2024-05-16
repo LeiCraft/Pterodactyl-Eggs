@@ -57,11 +57,9 @@ function setupSSH() {
 }
 
 
-if [ ! -e "/.postInstallationMade" ]; then
 
-    setupRootPW
+setupRootPW
+setupSSH
 
-    setupSSH
+touch "/.postInstallationMade"
 
-    touch "/.postInstallationMade"
-fi
