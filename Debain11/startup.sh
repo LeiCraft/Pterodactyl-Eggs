@@ -32,7 +32,7 @@ function installOS() {
     printf "${CYAN}│                                   ${RED}Debain 11${CYAN}                                   │${NC}\n"
     printf "${CYAN}│                                                                               │${NC}\n"
     printf "${CYAN}╰───────────────────────────────────────────────────────────────────────────────╯${NC}\n"
-    printf ""
+    printf "\n"
   
     printf "${GREEN}Installing Debian 11...${NC}"
     url="https://fra1lxdmirror01.do.letsbuildthe.cloud/images/debian/bullseye/amd64/default/"

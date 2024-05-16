@@ -12,7 +12,7 @@ printf "${CYAN}│                                                              
 printf "${CYAN}│                                   ${RED}Debain 11${CYAN}                                   │${NC}\n"
 printf "${CYAN}│                                                                               │${NC}\n"
 printf "${CYAN}╰───────────────────────────────────────────────────────────────────────────────╯${NC}\n"
-printf ""
+printf "\n"
 
 function startup() {
 
