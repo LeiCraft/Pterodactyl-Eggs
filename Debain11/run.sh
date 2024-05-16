@@ -40,7 +40,9 @@ function execute_command() {
 
 function main() {
 
-    echo -e "\nRun Commands below:"
+    echo -e "";
+    echo -e "\nServer Started. Use shutdown to stop."
+    echo -e "Run Commands below:"
 
     # Associative array to map commands to functions
     declare -A -g command_functions=(
