@@ -409,4 +409,4 @@ done < "$ROOTFS_DIR/vps.config"
 "$ROOTFS_DIR/usr/local/bin/proot" \
 --rootfs="${ROOTFS_DIR}" \
 -0 -w "/root" -b /dev -b /sys -b /proc -b /etc/resolv.conf $port_args --kill-on-exit \
-/bin/sh "$ROOTFS_DIR/run.sh"
+/bin/bash "$ROOTFS_DIR/run.sh"
