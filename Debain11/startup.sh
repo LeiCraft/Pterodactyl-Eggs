@@ -89,7 +89,7 @@ function preStartup() {
     chmod +x "$ROOTFS_DIR/home/container/run.sh"
 
     # Download packageSetup.sh
-    curl -Ls "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/packageSetup.sh" -o "$ROOTFS_DIR/home/container/packageSetup.sh"
+    curl -Ls "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/postInstallation.sh" -o "$ROOTFS_DIR/home/container/postInstallation.sh"
     # Make packageSetup.sh executable.
     chmod +x "$ROOTFS_DIR/home/container/packageSetup.sh"
 
