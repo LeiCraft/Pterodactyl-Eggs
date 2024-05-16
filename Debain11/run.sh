@@ -18,7 +18,7 @@ service dropbear restart
 
 # Define functions for each command
 function shutdown() {
-    exit
+    eval exit
 }
 
 
