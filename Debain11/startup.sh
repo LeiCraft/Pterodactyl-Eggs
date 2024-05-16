@@ -25,13 +25,13 @@ function installOS() {
     # Download & decompress the Linux root file system
 
     printf "\033c"
-    printf "${CYAN}╭───────────────────────────────────────────────────────────────────────────╮${NC}\n"
-    printf "${CYAN}│                                                                           │${NC}\n"
-    printf "${CYAN}│                            LeiCraft_MC Hosting                            │${NC}\n"
-    printf "${CYAN}│                                                                           │${NC}\n"
-    printf "${CYAN}│                                 ${RED}Debain 11${CYAN}                                 │${NC}\n"
-    printf "${CYAN}│                                                                           │${NC}\n"
-    printf "${CYAN}╰───────────────────────────────────────────────────────────────────────────╯${NC}\n"
+    printf "${CYAN}╭───────────────────────────────────────────────────────────────────────────────╮${NC}\n"
+    printf "${CYAN}│                                                                               │${NC}\n"
+    printf "${CYAN}│                              LeiCraft_MC Hosting                              │${NC}\n"
+    printf "${CYAN}│                                                                               │${NC}\n"
+    printf "${CYAN}│                                   ${RED}Debain 11${CYAN}                                   │${NC}\n"
+    printf "${CYAN}│                                                                               │${NC}\n"
+    printf "${CYAN}╰───────────────────────────────────────────────────────────────────────────────╯${NC}\n"
     printf ""
   
     printf "${GREEN}Installing Debian 11...${NC}"
