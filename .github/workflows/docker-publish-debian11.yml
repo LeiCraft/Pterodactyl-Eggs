@@ -19,7 +19,7 @@ env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: pterodactyl-debain11
+  IMAGE_NAME: leicraft/pterodactyl-debain11
 
 
 jobs:
@@ -59,7 +59,7 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
-          password: ${{ secrets.PAT }}
+          password: ${{ secrets.GITHUB_TOKEN  }}
 
       # Extract metadata (tags, labels) for Docker
       # https://github.com/docker/metadata-action
