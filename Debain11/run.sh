@@ -18,7 +18,7 @@ function startup() {
 
     sleep 2
 
-    bash /home/container/packageSetup.sh
+    bash /home/container/postInstallation.sh
 
     service dropbear restart
     echo "Started SSH Server"
