@@ -43,7 +43,6 @@ function main() {
     echo -e "";
     echo -e "\nServer Started. Use shutdown to stop."
     echo -e "Run Commands below:"
-    echo -e "> "
 
     # Associative array to map commands to functions
     declare -A -g command_functions=(
