@@ -25,16 +25,16 @@ function installOS() {
     # Download & decompress the Linux root file system
 
     printf "\033c"
-    echo "${CYAN}╭───────────────────────────────────────────────────────────────────────────────╮${NC}"
-    echo "${CYAN}│                                                                               │${NC}"
-    echo "${CYAN}│                              LeiCraft_MC Hosting                              │${NC}"
-    echo "${CYAN}│                                                                               │${NC}"
-    echo "${CYAN}│                                   ${RED}Debain 11                                   │${NC}"
-    echo "${CYAN}│                                                                               │${NC}"
-    echo "${CYAN}╰───────────────────────────────────────────────────────────────────────────────╯${NC}"
-    echo ""
+    printf "${CYAN}╭───────────────────────────────────────────────────────────────────────────────╮${NC}"
+    printf "${CYAN}│                                                                               │${NC}"
+    printf "${CYAN}│                              LeiCraft_MC Hosting                              │${NC}"
+    printf "${CYAN}│                                                                               │${NC}"
+    printf "${CYAN}│                                   ${RED}Debain 11                                   │${NC}"
+    printf "${CYAN}│                                                                               │${NC}"
+    printf "${CYAN}╰───────────────────────────────────────────────────────────────────────────────╯${NC}"
+    printf ""
   
-    echo "${GREEN}Installing Debian 11...${NC}"
+    printf "${GREEN}Installing Debian 11...${NC}"
     url="https://fra1lxdmirror01.do.letsbuildthe.cloud/images/debian/bullseye/amd/default/"
 
     LATEST_VERSION=$(curl -s $url | grep -oP 'href="\K[^"]+/' | sort -r | head -n 1)

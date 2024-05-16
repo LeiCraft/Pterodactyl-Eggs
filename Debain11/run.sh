@@ -5,14 +5,14 @@ RED="\[\033[38;2;255;0;0m\]"
 NC='\033[0m'
 
 printf "\033c"
-echo "${CYAN}╭───────────────────────────────────────────────────────────────────────────────╮${NC}"
-echo "${CYAN}│                                                                               │${NC}"
-echo "${CYAN}│                              LeiCraft_MC Hosting                              │${NC}"
-echo "${CYAN}│                                                                               │${NC}"
-echo "${CYAN}│                                   ${RED}Debain 11                                   │${NC}"
-echo "${CYAN}│                                                                               │${NC}"
-echo "${CYAN}╰───────────────────────────────────────────────────────────────────────────────╯${NC}"
-echo ""
+printf "${CYAN}╭───────────────────────────────────────────────────────────────────────────────╮${NC}"
+printf "${CYAN}│                                                                               │${NC}"
+printf "${CYAN}│                              LeiCraft_MC Hosting                              │${NC}"
+printf "${CYAN}│                                                                               │${NC}"
+printf "${CYAN}│                                   ${RED}Debain 11                                   │${NC}"
+printf "${CYAN}│                                                                               │${NC}"
+printf "${CYAN}╰───────────────────────────────────────────────────────────────────────────────╯${NC}"
+printf ""
 
 function startup() {
 
