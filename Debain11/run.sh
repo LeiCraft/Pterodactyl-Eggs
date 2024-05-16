@@ -16,7 +16,7 @@ printf "                                                                        
 
 function startup() {
 
-    service dropbear restart >/dev/null 2>&1
+    service dropbear restart &> /dev/null
     echo "Started SSH Server"
 
 }
