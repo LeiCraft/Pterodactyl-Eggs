@@ -41,9 +41,40 @@ function setupHostname() {
 
     sed -i '$a127.0.0.1 '"$new_hostname"'' /etc/hosts
     echo -e "LHOSTNAME=$new_hostname\nHOSTNAME=$new_hostname" > /etc/environment
-    echo -e "export LHOSTNAME=$new_hostname\nexport HOSTNAME=$new_hostname" > /etc/profile.d/hostname.sh
-    sed -i 's/\\h/${LHOSTNAME}/g' /etc/bash.bashrc
+    echo "
+#!/bin/bash
 
+export LHOSTNAME=$new_hostname
+export HOSTNAME=$new_hostname
+
+function setupUserHostname() {
+
+    # Loop through each user's home directory
+    for user_home in /home/*; do
+        if [ -d \"\$user_home\" ]; then
+            bashrc_file=\"\$user_home/.bashrc\"
+            
+            # Check if .bashrc exists for the user
+            if [ -f "$bashrc_file" ]; then
+                # Replace \h with new_hostname in the .bashrc file
+                sed -i 's/\\\\h/\${LHOSTNAME}/g' \"\$bashrc_file\"
+            fi
+        fi
+    done
+
+    # Also update .bashrc for the root user if exists
+    root_bashrc=\"/root/.bashrc\"
+    if [ -f \"\$root_bashrc\" ]; then
+        sed -i 's/\\\\h/\${LHOSTNAME}/g' \"\$root_bashrc\"
+    fi
+
+}
+
+setupUserHostname
+
+
+" > /etc/profile.d/hostname.sh
+    sed -i 's/\\h/${LHOSTNAME}/g' /etc/bash.bashrc
 }
 
 function setupBasicPackages() {
