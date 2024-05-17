@@ -22,6 +22,13 @@ function install() {
 
         bash "$ROOTFS_DIR/install.sh"
     fi
+
+    if [ ! -e "/.postInstallationMade" ]; then
+        # Download packageSetup.sh
+        curl -Ls "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/postInstallation.sh" -o "/home/container/postInstallation.sh"
+        # Make packageSetup.sh executable.
+        chmod +x "/home/container/postInstallation.sh"
+    fi
 }
 
 
