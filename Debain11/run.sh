@@ -23,6 +23,10 @@ function startup() {
     if [ ! -e "/.postInstallationMade" ]; then
         bash /home/container/postInstallation.sh
     fi
+
+    if [ "$EXPERIMENTAL" -eq 1 ]; then
+        echo "Experimental Mode Selected"
+    fi
     
     service dropbear restart
     echo "Started SSH Server under Port ${SERVER_PORT}"
