@@ -27,15 +27,34 @@ function install() {
 }
 
 
+function downloadPostInstallationFiles() {
+    # Download postInstallation.sh
+    curl -Ls -H 'Pragma: no-cache' \
+             -H 'Cache-Control: no-cache, no-store' \
+             "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/postInstallation.sh" -o "$ROOTFS_DIR/home/container/postInstallation.sh"
+    # Make postInstallation.sh executable.
+    chmod +x "$ROOTFS_DIR/home/container/postInstallation.sh"
+
+    # Download preLoginAll.sh
+    curl -Ls -H 'Pragma: no-cache' \
+             -H 'Cache-Control: no-cache, no-store' \
+             "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/preLoginAll.sh" -o "$ROOTFS_DIR/home/container/preLoginAll.sh"
+    # Make preLoginAll.sh executable.
+    chmod +x "$ROOTFS_DIR/home/container/preLoginAll.sh"
+
+        # Download preLoginUser.sh
+    curl -Ls -H 'Pragma: no-cache' \
+             -H 'Cache-Control: no-cache, no-store' \
+             "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/preLoginUser.sh" -o "$ROOTFS_DIR/home/container/preLoginUser.sh"
+    # Make preLoginUser.sh executable.
+    chmod +x "$ROOTFS_DIR/home/container/preLoginUser.sh"
+}
+
+
 function start() {
 
     if [ ! -e "/.postInstallationMade" ]; then
-        # Download packageSetup.sh
-        curl -Ls -H 'Pragma: no-cache' \
-                 -H 'Cache-Control: no-cache, no-store' \
-                 "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/postInstallation.sh" -o "$ROOTFS_DIR/home/container/postInstallation.sh"
-        # Make packageSetup.sh executable.
-        chmod +x "$ROOTFS_DIR/home/container/postInstallation.sh"
+        downloadPostInstallationFiles
     fi
 
     # Download run.sh
