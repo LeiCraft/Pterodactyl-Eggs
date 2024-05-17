@@ -32,7 +32,7 @@ function installOS() {
     printf "${CYAN}╰───────────────────────────────────────────────────────────────────────────────╯${NC}\n"
     printf "\n"
   
-    printf "${GREEN}Installing Debian 11...${NC}"
+    printf "${GREEN}Installing Debian 11...${NC}\n"
     url="https://fra1lxdmirror01.do.letsbuildthe.cloud/images/debian/bullseye/amd64/default/"
 
     LATEST_VERSION=$(curl -s $url | grep -oP 'href="\K[^"]+/' | sort -r | head -n 1)
