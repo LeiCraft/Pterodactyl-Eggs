@@ -22,7 +22,7 @@ function installOS() {
 
     # Download & decompress the Linux root file system
 
-    printf "\033c"
+    #printf "\033c"
     printf "${CYAN}╭───────────────────────────────────────────────────────────────────────────────╮${NC}\n"
     printf "${CYAN}│                                                                               │${NC}\n"
     printf "${CYAN}│                              LeiCraft_MC Hosting                              │${NC}\n"
