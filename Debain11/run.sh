@@ -24,7 +24,7 @@ function setupHostname() {
             # Check if .bashrc exists for the user
             if [ -f "$bashrc_file" ]; then
                 # Replace \h with new_hostname in the .bashrc file
-                sed -i 's/\\h/'"$HOSTNAME"'/g' "$bashrc_file"
+                sed -i 's/\\h/${LHOSTNAME}/g' "$bashrc_file"
             fi
         fi
     done
@@ -32,7 +32,7 @@ function setupHostname() {
     # Also update .bashrc for the root user if exists
     root_bashrc="/root/.bashrc"
     if [ -f "$root_bashrc" ]; then
-        sed -i 's/\\h/'"$HOSTNAME"'/g' "$root_bashrc"
+        sed -i 's/\\h/${LHOSTNAME}"'/g' "$root_bashrc"
     fi
 
 }

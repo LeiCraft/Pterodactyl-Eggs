@@ -41,7 +41,8 @@ function setupHostname() {
 
     sed -i '$a127.0.0.1 '"$new_hostname"'' /etc/hosts
     echo -e "LHOSTNAME=$new_hostname\nHOSTNAME=$new_hostname" > /etc/environment
-    sed -i 's/\\h/'"$new_hostname"'/g' /etc/bash.bashrc
+    echo -e "export LHOSTNAME=$new_hostname\nexport HOSTNAME=$new_hostname" > /etc/profile.d/hostname.sh
+    sed -i 's/\\h/${LHOSTNAME}'/g' /etc/bash.bashrc
 
 }
 
