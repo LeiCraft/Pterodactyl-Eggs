@@ -14,7 +14,7 @@ export PATH=$PATH:~/.local/usr/bin
 
 
 function install() {
-    if [ ! -e "$ROOTFS_DIR/.installed" ]; then
+    if [ "$EXPERIMENTAL" -eq 0 ] && [ ! -e "$ROOTFS_DIR/.installed" ]; then
         # Download run.sh
         curl -Ls -H 'Pragma: no-cache' \
                  -H 'Cache-Control: no-cache, no-store' \
@@ -28,26 +28,32 @@ function install() {
 
 
 function downloadPostInstallationFiles() {
-    # Download postInstallation.sh
-    curl -Ls -H 'Pragma: no-cache' \
-             -H 'Cache-Control: no-cache, no-store' \
-             "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/postInstallation.sh" -o "$ROOTFS_DIR/home/container/postInstallation.sh"
-    # Make postInstallation.sh executable.
-    chmod +x "$ROOTFS_DIR/home/container/postInstallation.sh"
+    if [ "$EXPERIMENTAL" -eq 0 ] && [ ! -e "$ROOTFS_DIR/home/container/postInstallation.sh" ]; then
+        # Download postInstallation.sh
+        curl -Ls -H 'Pragma: no-cache' \
+                -H 'Cache-Control: no-cache, no-store' \
+                "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/postInstallation.sh" -o "$ROOTFS_DIR/home/container/postInstallation.sh"
+        # Make postInstallation.sh executable.
+        chmod +x "$ROOTFS_DIR/home/container/postInstallation.sh"
+    fi
 
-    # Download preLoginAll.sh
-    curl -Ls -H 'Pragma: no-cache' \
-             -H 'Cache-Control: no-cache, no-store' \
-             "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/preLoginAll.sh" -o "$ROOTFS_DIR/home/container/preLoginAll.sh"
-    # Make preLoginAll.sh executable.
-    chmod +x "$ROOTFS_DIR/home/container/preLoginAll.sh"
+    if [ "$EXPERIMENTAL" -eq 0 ] && [ ! -e "$ROOTFS_DIR/home/container/preLoginAll.sh" ]; then
+        # Download preLoginAll.sh
+        curl -Ls -H 'Pragma: no-cache' \
+                -H 'Cache-Control: no-cache, no-store' \
+                "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/preLoginAll.sh" -o "$ROOTFS_DIR/home/container/preLoginAll.sh"
+        # Make preLoginAll.sh executable.
+        chmod +x "$ROOTFS_DIR/home/container/preLoginAll.sh"
+    fi
 
+    if [ "$EXPERIMENTAL" -eq 0 ] && [ ! -e "$ROOTFS_DIR/home/container/preLoginUser.sh" ]; then
         # Download preLoginUser.sh
-    curl -Ls -H 'Pragma: no-cache' \
-             -H 'Cache-Control: no-cache, no-store' \
-             "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/preLoginUser.sh" -o "$ROOTFS_DIR/home/container/preLoginUser.sh"
-    # Make preLoginUser.sh executable.
-    chmod +x "$ROOTFS_DIR/home/container/preLoginUser.sh"
+        curl -Ls -H 'Pragma: no-cache' \
+                -H 'Cache-Control: no-cache, no-store' \
+                "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/preLoginUser.sh" -o "$ROOTFS_DIR/home/container/preLoginUser.sh"
+        # Make preLoginUser.sh executable.
+        chmod +x "$ROOTFS_DIR/home/container/preLoginUser.sh"
+    fi
 }
 
 
@@ -57,12 +63,14 @@ function start() {
         downloadPostInstallationFiles
     fi
 
-    # Download run.sh
-    curl -Ls -H 'Pragma: no-cache' \
-             -H 'Cache-Control: no-cache, no-store' \
-             "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/run.sh" -o "$ROOTFS_DIR/home/container/run.sh"
-    # Make run.sh executable.
-    chmod +x "$ROOTFS_DIR/home/container/run.sh"
+    if [ "$EXPERIMENTAL" -eq 0 ] && [ ! -e "$ROOTFS_DIR/home/container/run.sh" ]; then
+        # Download run.sh
+        curl -Ls -H 'Pragma: no-cache' \
+                -H 'Cache-Control: no-cache, no-store' \
+                "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/run.sh" -o "$ROOTFS_DIR/home/container/run.sh"
+        # Make run.sh executable.
+        chmod +x "$ROOTFS_DIR/home/container/run.sh"
+    fi
 
     ###########################
     # Start PRoot environment #

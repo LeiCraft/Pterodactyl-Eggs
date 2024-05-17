@@ -217,6 +217,16 @@
             "user_editable": true,
             "rules": "nullable|string|max:5",
             "field_type": "text"
+        },
+        {
+            "name": "Experimental",
+            "description": "",
+            "env_variable": "EXPERIMENTAL",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "boolean|int",
+            "field_type": "text"
         }
     ]
 }
