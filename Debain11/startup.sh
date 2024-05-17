@@ -16,11 +16,11 @@ export PATH=$PATH:~/.local/usr/bin
 function install() {
     if [ ! -e "$ROOTFS_DIR/.installed" ]; then
         # Download run.sh
-        curl -Ls "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/install.sh" -o "$ROOTFS_DIR/home/container/install.sh"
+        curl -Ls "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/install.sh" -o "$ROOTFS_DIR/install.sh"
         # Make run.sh executable.
-        chmod +x "$ROOTFS_DIR/home/container/install.sh"
+        chmod +x "$ROOTFS_DIR/install.sh"
 
-        bash "$ROOTFS_DIR/home/container/install.sh"
+        bash "$ROOTFS_DIR/install.sh"
     fi
 }
 
@@ -28,7 +28,7 @@ function install() {
 function start() {
 
     # Download run.sh
-    curl -Ls "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/run.sh" -o "$ROOTFS_DIR/home/container/install.sh"
+    curl -Ls "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/run.sh" -o "$ROOTFS_DIR/home/container/run.sh"
     # Make run.sh executable.
     chmod +x "$ROOTFS_DIR/home/container/run.sh"
 
