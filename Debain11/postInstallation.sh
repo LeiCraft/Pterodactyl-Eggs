@@ -77,6 +77,7 @@ function setupSSH() {
 
 setupRootPW
 setupHostname
+setupBasicPackages
 setupSSH
 
 touch "/.postInstallationMade"
