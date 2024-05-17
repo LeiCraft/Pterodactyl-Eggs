@@ -14,13 +14,15 @@ export PATH=$PATH:~/.local/usr/bin
 
 
 function install() {
-    if [ "$EXPERIMENTAL" -eq 0 ] && [ ! -e "$ROOTFS_DIR/.installed" ]; then
-        # Download run.sh
-        curl -Ls -H 'Pragma: no-cache' \
-                 -H 'Cache-Control: no-cache, no-store' \
-                 "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/install.sh" -o "$ROOTFS_DIR/install.sh"
-        # Make run.sh executable.
-        chmod +x "$ROOTFS_DIR/install.sh"
+    if [ ! -e "$ROOTFS_DIR/.installed" ]; then
+            if [ "$EXPERIMENTAL" -ne 1 ]; then
+            # Download run.sh
+            curl -Ls -H 'Pragma: no-cache' \
+                    -H 'Cache-Control: no-cache, no-store' \
+                    "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/install.sh" -o "$ROOTFS_DIR/install.sh"
+            # Make run.sh executable.
+            chmod +x "$ROOTFS_DIR/install.sh"
+        fi
 
         bash "$ROOTFS_DIR/install.sh"
     fi
@@ -28,7 +30,7 @@ function install() {
 
 
 function downloadPostInstallationFiles() {
-    if [ "$EXPERIMENTAL" -eq 0 ] && [ ! -e "$ROOTFS_DIR/home/container/postInstallation.sh" ]; then
+    if [ "$EXPERIMENTAL" -ne 1 ] || [ ! -e "$ROOTFS_DIR/home/container/postInstallation.sh" ]; then
         # Download postInstallation.sh
         curl -Ls -H 'Pragma: no-cache' \
                 -H 'Cache-Control: no-cache, no-store' \
@@ -37,7 +39,7 @@ function downloadPostInstallationFiles() {
         chmod +x "$ROOTFS_DIR/home/container/postInstallation.sh"
     fi
 
-    if [ "$EXPERIMENTAL" -eq 0 ] && [ ! -e "$ROOTFS_DIR/home/container/preLoginAll.sh" ]; then
+    if [ "$EXPERIMENTAL" -ne 1 ] || [ ! -e "$ROOTFS_DIR/home/container/preLoginAll.sh" ]; then
         # Download preLoginAll.sh
         curl -Ls -H 'Pragma: no-cache' \
                 -H 'Cache-Control: no-cache, no-store' \
@@ -46,7 +48,7 @@ function downloadPostInstallationFiles() {
         chmod +x "$ROOTFS_DIR/home/container/preLoginAll.sh"
     fi
 
-    if [ "$EXPERIMENTAL" -eq 0 ] && [ ! -e "$ROOTFS_DIR/home/container/preLoginUser.sh" ]; then
+    if [ "$EXPERIMENTAL" -ne 1 ] || [ ! -e "$ROOTFS_DIR/home/container/preLoginUser.sh" ]; then
         # Download preLoginUser.sh
         curl -Ls -H 'Pragma: no-cache' \
                 -H 'Cache-Control: no-cache, no-store' \
@@ -63,7 +65,7 @@ function start() {
         downloadPostInstallationFiles
     fi
 
-    if [ "$EXPERIMENTAL" -eq 0 ] && [ ! -e "$ROOTFS_DIR/home/container/run.sh" ]; then
+    if [ "$EXPERIMENTAL" -ne 1 ] && [ ! -e "$ROOTFS_DIR/home/container/run.sh" ]; then
         # Download run.sh
         curl -Ls -H 'Pragma: no-cache' \
                 -H 'Cache-Control: no-cache, no-store' \

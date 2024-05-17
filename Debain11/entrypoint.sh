@@ -7,7 +7,7 @@ MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g'
 # Make internal Docker IP address available to processes.
 export INTERNAL_IP=`ip route get 1 | awk '{print $NF;exit}'`
 
-if [ "$EXPERIMENTAL" -eq 0 ] && [ ! -e "/home/container/startup.sh" ]; then
+if [ "$EXPERIMENTAL" -ne 1 ] || [ ! -e "/home/container/startup.sh" ]; then
 	curl -Ls -H 'Pragma: no-cache' \
              -H 'Cache-Control: no-cache, no-store' \
              https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/startup.sh -o startup.sh
