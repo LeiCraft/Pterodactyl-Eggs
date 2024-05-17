@@ -43,6 +43,7 @@ function setupHostname() {
 127.0.0.1 '"$new_hostname"'\
 ' /etc/hosts
     
+    echo "" > /etc/environment
     sed -i '$a\
 LHOSTNAME='"$new_hostname"'\
 HOSTNAME='"$new_hostname"'\
