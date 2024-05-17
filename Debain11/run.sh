@@ -20,8 +20,6 @@ function startup() {
 
     sleep 2
 
-    setupHostname
-
     if [ ! -e "/.postInstallationMade" ]; then
         bash /home/container/postInstallation.sh
     fi
