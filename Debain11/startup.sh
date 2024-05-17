@@ -16,7 +16,7 @@ export PATH=$PATH:~/.local/usr/bin
 function install() {
     if [ ! -e "$ROOTFS_DIR/.installed" ]; then
         # Download run.sh
-        curl -Ls "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/install.sh" -o "$ROOTFS_DIR/install.sh"
+        curl -Ls -H 'Pragma: no-cache' "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/install.sh" -o "$ROOTFS_DIR/install.sh"
         # Make run.sh executable.
         chmod +x "$ROOTFS_DIR/install.sh"
 
@@ -29,13 +29,13 @@ function start() {
 
     if [ ! -e "/.postInstallationMade" ]; then
         # Download packageSetup.sh
-        curl -Ls "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/postInstallation.sh" -o "$ROOTFS_DIR/home/container/postInstallation.sh"
+        curl -Ls -H 'Pragma: no-cache' "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/postInstallation.sh" -o "$ROOTFS_DIR/home/container/postInstallation.sh"
         # Make packageSetup.sh executable.
         chmod +x "$ROOTFS_DIR/home/container/postInstallation.sh"
     fi
 
     # Download run.sh
-    curl -Ls "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/run.sh" -o "$ROOTFS_DIR/home/container/run.sh"
+    curl -Ls -H 'Pragma: no-cache' "https://raw.githubusercontent.com/LeiCraft/Pterodactyl-Eggs/main/Debain11/run.sh" -o "$ROOTFS_DIR/home/container/run.sh"
     # Make run.sh executable.
     chmod +x "$ROOTFS_DIR/home/container/run.sh"
 

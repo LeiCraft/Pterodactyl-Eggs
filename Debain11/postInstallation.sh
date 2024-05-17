@@ -40,6 +40,7 @@ function setupHostname() {
     hostnamectl set-hostname "$new_hostname"
 
     echo "127.0.0.1 $new_hostname" | sudo tee -a /etc/hosts >/dev/null
+    echo "HOSTNAME=$new_hostname" | sudo tee -a /etc/environment >/dev/null
 }
 
 function setupBasicPackages() {
