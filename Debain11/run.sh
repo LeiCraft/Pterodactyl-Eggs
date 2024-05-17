@@ -23,7 +23,7 @@ function startup() {
     fi
     
     service dropbear restart
-    echo "Started SSH Server"
+    echo "Started SSH Server under Port ${SERVER_PORT}"
 
 }
 

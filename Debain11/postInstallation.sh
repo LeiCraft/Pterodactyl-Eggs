@@ -32,6 +32,17 @@ function setupRootPW() {
 }
 
 
+function setupHostname() {
+    uuid_prefix=$(echo "$P_SERVER_UUID" | cut -c 1-8)
+
+    # Set the hostname using hostnamectl
+    new_hostname="leicraftmc-${uuid_prefix}"
+    hostnamectl set-hostname "$new_hostname"
+
+    echo "127.0.0.1 $new_hostname" | sudo tee -a /etc/hosts >/dev/null
+}
+
+
 function setupSSH() {
 
     apt install dropbear -y
@@ -57,8 +68,8 @@ function setupSSH() {
 }
 
 
-
 setupRootPW
+setupHostname
 setupSSH
 
 touch "/.postInstallationMade"
