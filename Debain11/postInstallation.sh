@@ -42,6 +42,13 @@ function setupHostname() {
     echo "127.0.0.1 $new_hostname" | sudo tee -a /etc/hosts >/dev/null
 }
 
+function setupBasicPackages() {
+
+    apt install nano -y
+    apt install curl -y
+
+}
+
 
 function setupSSH() {
 
