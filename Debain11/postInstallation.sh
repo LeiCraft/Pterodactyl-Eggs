@@ -39,16 +39,8 @@ function setupHostname() {
     new_hostname="leicraftmc-${uuid_prefix}"
     hostnamectl set-hostname "$new_hostname"
 
-    sed -i '$a\
-127.0.0.1 '"$new_hostname"'\
-' /etc/hosts
-    
-    echo "" > /etc/environment
-    sed -i '$a\
-LHOSTNAME='"$new_hostname"'\
-HOSTNAME='"$new_hostname"'\
-' /etc/environment
-
+    sed -i '$a127.0.0.1 '"$new_hostname"'' /etc/hosts
+    echo -e "LHOSTNAME=$new_hostname\nHOSTNAME=$new_hostname" > /etc/environment
     sed -i 's/\\h/'"$new_hostname"'/g' /etc/bash.bashrc
 
 }
