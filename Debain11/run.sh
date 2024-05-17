@@ -14,7 +14,7 @@ printf "${CYAN}│                                                              
 printf "${CYAN}╰───────────────────────────────────────────────────────────────────────────────╯${NC}\n"
 printf "\n"
 
-function setipHostname() {
+function setupHostname() {
 
     # Loop through each user's home directory
     for user_home in /home/*; do
