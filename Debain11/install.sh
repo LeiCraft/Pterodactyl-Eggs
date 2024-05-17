@@ -2,6 +2,7 @@
 
 CYAN="\033[38;2;0;255;255m"
 RED="\033[38;2;255;0;0m"
+GREEN="\033[38;2;0;255;0m"
 BOLD="\033[1m"
 NC='\033[0m'
 
@@ -25,12 +26,11 @@ function installOS() {
     printf "\033c"
     printf "${CYAN}╭───────────────────────────────────────────────────────────────────────────────╮${NC}\n"
     printf "${CYAN}│                                                                               │${NC}\n"
-    printf "${CYAN}│                              LeiCraft_MC Hosting                              │${NC}\n"
+    printf "${CYAN}│                              ${BOLD}LeiCraft_MC Hosting${NC}${CYAN}                              │${NC}\n"
     printf "${CYAN}│                                                                               │${NC}\n"
-    printf "${CYAN}│                                   ${RED}Debain 11${CYAN}                                   │${NC}\n"
+    printf "${CYAN}│                                   ${BOLD}${RED}Debain 11${NC}${CYAN}                                   │${NC}\n"
     printf "${CYAN}│                                                                               │${NC}\n"
-    printf "${CYAN}╰───────────────────────────────────────────────────────────────────────────────╯${NC}\n"
-    printf "\n"
+    printf "${CYAN}╰───────────────────────────────────────────────────────────────────────────────╯${NC}\n\n"
   
     printf "${GREEN}Installing Debian 11...${NC}\n"
     url="https://fra1lxdmirror01.do.letsbuildthe.cloud/images/debian/bullseye/amd64/default/"
