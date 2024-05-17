@@ -14,9 +14,34 @@ printf "${CYAN}│                                                              
 printf "${CYAN}╰───────────────────────────────────────────────────────────────────────────────╯${NC}\n"
 printf "\n"
 
+function setipHostname() {
+
+    # Loop through each user's home directory
+    for user_home in /home/*; do
+        if [ -d "$user_home" ]; then
+            bashrc_file="$user_home/.bashrc"
+            
+            # Check if .bashrc exists for the user
+            if [ -f "$bashrc_file" ]; then
+                # Replace \h with new_hostname in the .bashrc file
+                sed -i 's/\\h/'"$HOSTNAME"'/g' "$bashrc_file"
+            fi
+        fi
+    done
+
+    # Also update .bashrc for the root user if exists
+    root_bashrc="/root/.bashrc"
+    if [ -f "$root_bashrc" ]; then
+        sed -i 's/\\h/'"$HOSTNAME"'/g' "$root_bashrc"
+    fi
+
+}
+
 function startup() {
 
     sleep 2
+
+    setupHostname
 
     if [ ! -e "/.postInstallationMade" ]; then
         bash /home/container/postInstallation.sh

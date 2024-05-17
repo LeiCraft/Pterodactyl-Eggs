@@ -39,8 +39,17 @@ function setupHostname() {
     new_hostname="leicraftmc-${uuid_prefix}"
     hostnamectl set-hostname "$new_hostname"
 
-    echo "127.0.0.1 $new_hostname" | sudo tee -a /etc/hosts >/dev/null
-    echo "HOSTNAME=$new_hostname" | sudo tee -a /etc/environment >/dev/null
+    sed -i '$a\
+    127.0.0.1 '"$new_hostname"'\
+    ' /etc/hosts
+
+    sed -i '$a\
+    LHOSTNAME='"$new_hostname"'\
+    HOSTNAME='"$new_hostname"'\
+    ' /etc/environment
+
+    sed -i 's/\\h/'"$new_hostname"'/g\' /etc/bash.bashrc
+
 }
 
 function setupBasicPackages() {
