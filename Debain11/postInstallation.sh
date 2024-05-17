@@ -55,7 +55,7 @@ function setupUserHostname() {
             bashrc_file=\"\$user_home/.bashrc\"
             
             # Check if .bashrc exists for the user
-            if [ -f "$bashrc_file" ]; then
+            if [ -f \"\$bashrc_file\" ]; then
                 # Replace \h with new_hostname in the .bashrc file
                 sed -i 's/\\\\h/\${LHOSTNAME}/g' \"\$bashrc_file\"
             fi
