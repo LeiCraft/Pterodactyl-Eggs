@@ -40,15 +40,15 @@ function setupHostname() {
     hostnamectl set-hostname "$new_hostname"
 
     sed -i '$a\
-    127.0.0.1 '"$new_hostname"'\
-    ' /etc/hosts
-
+127.0.0.1 '"$new_hostname"'\
+' /etc/hosts
+    
     sed -i '$a\
-    LHOSTNAME='"$new_hostname"'\
-    HOSTNAME='"$new_hostname"'\
-    ' /etc/environment
+LHOSTNAME='"$new_hostname"'\
+HOSTNAME='"$new_hostname"'\
+' /etc/environment
 
-    sed -i 's/\\h/'"$new_hostname"'/g\' /etc/bash.bashrc
+    sed -i 's/\\h/'"$new_hostname"'/g' /etc/bash.bashrc
 
 }
 
