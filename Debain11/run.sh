@@ -32,7 +32,7 @@ function setupHostname() {
     # Also update .bashrc for the root user if exists
     root_bashrc="/root/.bashrc"
     if [ -f "$root_bashrc" ]; then
-        sed -i 's/\\h/${LHOSTNAME}"'/g' "$root_bashrc"
+        sed -i 's/\\h/${LHOSTNAME}/g' "$root_bashrc"
     fi
 
 }
